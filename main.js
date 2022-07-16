@@ -3,19 +3,17 @@ let guessButton = document.getElementById("guessButton");
 let resetButton = document.getElementById("resetButton");
 let hintButton = document.getElementById("hintButton");
 let guessList = document.getElementById("guessTracker");
-let randomNum = Math.floor(Math.random() * 100);
 let tempReporter = document.getElementById("tempReporter")
-// tempReporter.textContent = ('test')
-// console.log(tempReporter)
-// console.log(randomNum)
+let randomNum = Math.floor(Math.random() * 100);
+
 
 // Disable guess button after 5 tries
-if (guesses > 5){
+while (guesses > 5){
     guessButton.disabled = true
     hintButton.disabled = true 
 }
 
-    //guess button function
+//guess button function
 guessButton.addEventListener('click', function(){
     let numIn = document.getElementById("numIn").value
     let difference = Math.abs(numIn - randomNum)
@@ -44,8 +42,10 @@ guessButton.addEventListener('click', function(){
     console.log(`numIn ` + numIn)
     console.log(`randomNum ` + randomNum)
     console.log(`difference ` + difference)
-    return guesses;
 })
+
+// Hit enter replicates guess button
+
 
 // reset button
 resetButton.addEventListener(`click`, function() {
@@ -54,6 +54,8 @@ resetButton.addEventListener(`click`, function() {
     guessButton.disabled = false
     hintButton.disabled = false
     tempReporter.textContent = (`Hot or Cold?`)
+    document.getElementById("numIn").value = ""
+    console.clear()
     //make guess cards disappear
     //reset hot or cold color
 })
@@ -61,14 +63,16 @@ resetButton.addEventListener(`click`, function() {
 // hint button
 hintButton.addEventListener('click', function() {
     let numIn = document.getElementById("numIn").value
-    let tooLowMsg = `try higher!`
-    let tooHighMsg = `try lower!`
     if (numIn < randomNum){
-        console.log(tooLowMsg)
+        tempReporter.textContent = (`try higher!`)
     }
-    if (numIn > randomNum){
-        console.log(tooHighMsg)
+    else if (numIn > randomNum){
+        tempReporter.textContent = (`try lower!`)
     } 
+    else{
+        tempReporter.textContent = (`take a guess!`)
+    }
+
 })
 
 
