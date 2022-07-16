@@ -7,16 +7,19 @@ let tempReporter = document.getElementById("tempReporter")
 let randomNum = Math.floor(Math.random() * 100);
 
 
-// Disable guess button after 5 tries
-while (guesses > 5){
-    guessButton.disabled = true
-    hintButton.disabled = true 
-}
+// Disable guess button after 5 tries. Change message to out of guesses
 
+//create array to store guessed values. Push array to <ul>
 //guess button function
 guessButton.addEventListener('click', function(){
+    guesses += 1;
     let numIn = document.getElementById("numIn").value
     let difference = Math.abs(numIn - randomNum)
+    if (guesses >= 5){
+        guessButton.disabled = true
+        hintButton.disabled = true
+        window.alert("Out of attempts!")
+    } 
     if (difference === 0){
         tempReporter.textContent = (`Winner!`)
         guessButton.disabled = true
@@ -37,14 +40,21 @@ guessButton.addEventListener('click', function(){
     else{
         tempReporter.textContent = (`Freezing!`)
     }
-    guesses += 1;
+
+    // Push to guess tracker
+    let guess = document.createElement('li');
+    guess.innerHTML = numIn;
+    // Alternative option to add text
+    // guess.appendChild(document.createTextNode(numIn))
+    document.getElementById('guessTracker').appendChild(guess);
+
+    //testing
     console.log(`Guesses ` + guesses)
     console.log(`numIn ` + numIn)
     console.log(`randomNum ` + randomNum)
     console.log(`difference ` + difference)
 })
-
-// Hit enter replicates guess button
+//Make hitting enter in input field trigger guess
 
 
 // reset button
@@ -55,6 +65,7 @@ resetButton.addEventListener(`click`, function() {
     hintButton.disabled = false
     tempReporter.textContent = (`Hot or Cold?`)
     document.getElementById("numIn").value = ""
+    guessList.innerHTML = ""
     console.clear()
     //make guess cards disappear
     //reset hot or cold color
@@ -69,15 +80,14 @@ hintButton.addEventListener('click', function() {
     else if (numIn > randomNum){
         tempReporter.textContent = (`try lower!`)
     } 
-    else{
+    else if (numIn === randomNum || numIn === ``){
         tempReporter.textContent = (`take a guess!`)
     }
-
+    // console.log(numIn)
 })
 
 
 
-// Reveal 'out of tries text'
 
 //Guess a number 1-100
 //Indicate if guess is hot or cold
