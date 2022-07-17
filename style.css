@@ -13,7 +13,7 @@ main{
     height: 550px;
     width: 550px;
     margin-top: 10vh;
-    box-shadow: 2px 2px 10px inset red, 2px 2px 10px blue;
+    box-shadow: 2px 2px 15px inset red, 2px 2px 15px blue;
     border: 1px solid rgb(93, 0, 93);
     border-radius: 65px;
     background-color: rgb(250, 249, 246);
@@ -31,8 +31,7 @@ main h1{
     /* background-color: aquamarine; */
     width: 250px;
     height: 75px;
-    border: 2px solid black;
-    /* box-shadow: 0px 0px 10px inset gold; */
+    border: 1px solid black;
     border-radius: 45px;
     font-size: 35px;
     text-align: center;
@@ -50,16 +49,16 @@ ul{
     padding-right: 35px;
     list-style: none;
     height: 150px;
+    /* box-shadow: 0px 0px 5px inset black; */
     /* background-color: aquamarine; */
 }
 ul li{
     margin-bottom: 10px;
+    margin-left: 20px;
 }
 .buttons{
     margin-left: 10px;
 }
 /* make guess input appear as cards as guesses are made */
-/* guess input large and centered with buttons underneath */
 /* make hot or cold indicator glow red or blue based on hot or cold.
    Change inner and outer shadow color */
-/* Make background a celebratory picture after winning */
