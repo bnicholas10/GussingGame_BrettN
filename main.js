@@ -22,32 +22,38 @@ guessButton.addEventListener('click', function(){
     } 
     if (difference === 0){
         tempReporter.textContent = (`Winner!`)
+        tempReporter.style.boxShadow = "0px 0px 20px gold, 0px 0px 20px inset gold"
         guessButton.disabled = true
         hintButton.disabled = true
     }
     else if (difference < 6){
         tempReporter.textContent = (`Blazing!!`)
+        tempReporter.style.boxShadow = "0px 0px 20px darkred, 0px 0px 20px inset darkred"
     }
     else if (difference < 26){
         tempReporter.textContent = (`Hot!`)
+        tempReporter.style.boxShadow = "0px 0px 20px red, 0px 0px 20px inset red"
     }
     else if (difference < 51){
         tempReporter.textContent = (`Warm`)
+        tempReporter.style.boxShadow = "0px 0px 20px orange, 0px 0px 20px inset orange"
     }
     else if (difference < 76){
         tempReporter.textContent = (`Cold`)
+        tempReporter.style.boxShadow = "0px 0px 20px lightblue, 0px 0px 20px inset lightblue"
     }
     else{
         tempReporter.textContent = (`Freezing!`)
+        tempReporter.style.boxShadow = "0px 0px 20px darkblue, 0px 0px 20px inset darkblue"
     }
-
+    
     // Push to guess tracker
     let guess = document.createElement('li');
     guess.innerHTML = numIn;
     // Alternative option to add text
     // guess.appendChild(document.createTextNode(numIn))
     document.getElementById('guessTracker').appendChild(guess);
-
+    
     //testing
     console.log(`Guesses ` + guesses)
     console.log(`numIn ` + numIn)
@@ -64,6 +70,7 @@ resetButton.addEventListener(`click`, function() {
     guessButton.disabled = false
     hintButton.disabled = false
     tempReporter.textContent = (`Hot or Cold?`)
+    tempReporter.style.boxShadow = "none"
     document.getElementById("numIn").value = ""
     guessList.innerHTML = ""
     console.clear()
@@ -80,7 +87,7 @@ hintButton.addEventListener('click', function() {
     else if (numIn > randomNum){
         tempReporter.textContent = (`try lower!`)
     } 
-    else if (numIn === randomNum || numIn === ``){
+    else{
         tempReporter.textContent = (`take a guess!`)
     }
     // console.log(numIn)
